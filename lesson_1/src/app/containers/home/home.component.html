@@ -1,0 +1,14 @@
+<main>
+    <button class="Random-user-getBtn" (click)="getUsers()">Старт</button>
+    <section class="user-list" *ngIf="userList.length">
+        <div class="user" *ngFor="let user of userList">
+            <img class="user-picture" src="{{user.picture}}">
+            <span class="user-name">{{user.name}}</span>
+            <span class="user-email">({{user.email}})</span>
+            <span class="user-phone">({{user.phone}})</span>
+        </div>
+    </section>
+    <button class="test-user-list" (click)="getUsers2()">Тест</button>
+    <section id="test"></section>
+</main>
+
