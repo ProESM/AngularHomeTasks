@@ -1,0 +1,32 @@
+.user-list-form {
+    width: 600px;
+    display: flex;
+    margin: auto;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.random-user-get-btn {
+    width: 150px;
+    height: 50px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 3px;
+    background: #83ba43;
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;    
+}
+
+.random-user-get-btn:disabled {
+    width: 150px;
+    height: 50px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 3px;
+    background: grey;
+    border: none;
+    color: darkgrey;
+    outline: none;
+    cursor: not-allowed;
+}

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { IUser, User } from './../../models/user';
+//import { IUser, User } from '@models/user';
 
 @Component({
   selector: 'user',
@@ -6,4 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
+  @Input() user: IUser;
 }

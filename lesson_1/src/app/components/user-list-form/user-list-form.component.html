@@ -1,0 +1,6 @@
+<form class="user-list-form">
+    <button class="random-user-get-btn" (click)="getUsers()" [disabled]="isProccessing">Старт</button>    
+    <user-list [userList]="userList"></user-list>
+    <button class="random-user-get-btn" (click)="getUsers2()" [disabled]="isTestProccessing">Тест</button>
+    <section id="test"></section>
+</form>

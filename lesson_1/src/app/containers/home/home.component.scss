@@ -1,52 +1,65 @@
-main {
-    width: 600px;
-    display: flex;
-    margin: auto;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-}
+// main {
+//     width: 600px;
+//     display: flex;
+//     margin: auto;
+//     justify-content: flex-start;
+//     align-items: center;
+//     flex-direction: column;
+// }
 
-.Random-user-getBtn {
-    width: 150px;
-    height: 50px;
-    margin-left: 20px;
-    border-radius: 3px;
-    background: #83ba43;
-    border: none;
-    color: #fff;
-    outline: none;
-}
+// .random-user-get-btn {
+//     width: 150px;
+//     height: 50px;
+//     margin: 10px 10px 10px 10px;
+//     border-radius: 3px;
+//     background: #83ba43;
+//     border: none;
+//     color: #fff;
+//     outline: none;
+//     cursor: pointer;    
+// }
 
-.user-list {
-    margin: 10px 10px 10px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
+// .random-user-get-btn:disabled {
+//     width: 150px;
+//     height: 50px;
+//     margin: 10px 10px 10px 10px;
+//     border-radius: 3px;
+//     background: grey;
+//     border: none;
+//     color: darkgrey;
+//     outline: none;
+//     cursor: not-allowed;
+// }
 
-.user {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+// .user-list {
+//     margin: 10px 10px 10px 10px;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: flex-start;
+// }
 
-.user-picture {
-    margin: 2px 2px 2px 2px;
-}
+// .user {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+// }
 
-.user-name {
-    margin: 2px 2px 2px 2px;
-    text-transform: capitalize;
-}
+// .user-picture {
+//     margin: 2px 2px 2px 2px;
+// }
 
-.user-email {
-    margin: 2px 2px 2px 2px;
-    color: green;
-}
+// .user-name {
+//     margin: 2px 2px 2px 2px;
+//     text-transform: capitalize;
+// }
 
-.user-phone {
-    margin: 2px 2px 2px 2px;
-    color: dodgerblue;
-}
+// .user-email {
+//     margin: 2px 2px 2px 2px;
+//     color: green;
+// }
+
+// .user-phone {
+//     margin: 2px 2px 2px 2px;
+//     color: dodgerblue;
+// }
