@@ -1,0 +1,7 @@
+<div class="users-generator">
+    <button class="random-user-get-btn" (click)="getUsers()" [disabled]="isProccessing" confirm confirmMessage="Вы действительно хотите обновить список пользователей?">Старт</button>
+
+    <div class="user-list" *ngIf="userList.length">
+        <user-view *ngFor="let user of userList" [user]="user" (onUserDelete)="onUserDelete(user)"></user-view>
+    </div>
+</div>

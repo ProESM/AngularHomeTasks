@@ -1,0 +1,8 @@
+<div class="user">
+    <img class="user-picture" changePicture [pictureUrls]="userPictureList">
+    <span class="user-name">{{user.name}}</span>
+    <span class="user-email">({{user.email}})</span>
+    <span class="user-phone">({{user.phone}})</span>
+    <span class="user-dob">({{user.dob | dateFormat }})</span>
+    <button type="button" (click)="deleteUser(user)">Удалить</button>
+</div>
