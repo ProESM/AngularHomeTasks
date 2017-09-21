@@ -1,0 +1,15 @@
+<form class="todo-form" (submit)="save($event)">  
+  <input type="text" class="todo-title" placeholder="Заголовок задачи" name="todoTitle" [(ngModel)]="todo.title" required>
+  <input type="text" class="todo-description" placeholder="Описание задачи" name="todoDescription" [(ngModel)]="todo.description">
+
+  <select multiple class="todo-tags" name="todoTags" [(ngModel)]="todo.tags" required>
+    <option *ngFor="let tag of tags" [value]="tag" >{{tag}}</option>
+  </select>
+
+  <select class="todo-status" name="todoStatus" [(ngModel)]="todo.statusId" required>
+    <!-- <option disabled selected [value]="null">Статус задачи</option> -->
+    <option *ngFor="let status of statuses" [value]="status.id" >{{status.name}}</option>
+  </select>
+
+  <button type="submit">Сохранить и закрыть</button>
+</form>

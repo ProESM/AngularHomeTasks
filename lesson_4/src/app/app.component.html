@@ -1,0 +1,14 @@
+<div class="editing-todos">
+  <app-slider #editingTodosSlider [todos]=editingTodos [maxVisibleCount]=3>
+    <todo *ngFor="let todo of editingTodosSlider.visibleTodos" [todo]="todo" (onSaved)="updateOrInsertTodo($event)"></todo>
+  </app-slider>
+  <div class="add-todo" (click)="addTodo()"></div>
+</div>
+
+<div class="todos-slider">
+  <div class="arrow-left" (click)="appSlider.scrolLeft()"></div>
+  <app-slider #appSlider [todos]=todos [maxVisibleCount]=3>
+    <item-component *ngFor="let todo of appSlider.visibleTodos" [todo]="todo" (click)="editTodo(todo)"></item-component>
+  </app-slider>
+  <div class="arrow-right" (click)="appSlider.scrollRight()"></div>
+</div>
