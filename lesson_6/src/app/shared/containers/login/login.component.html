@@ -1,0 +1,25 @@
+<form class="LoginForm" autocomplete="off" #loginForm="ngForm">
+  <h2 class="LoginForm-title">
+    <span class="Text--highlight">Вход в систему</span>
+  </h2>
+
+  <div class="LoginForm-formControl">
+    <div class="LoginForm-formControl-login">      
+      <span *ngIf="!loginForm.controls['loginInput'].valid && loginForm.submitted">{{validationMessages['loginInput']}}</span>
+      <input type="text" class="InputControl LoginForm-input" placeholder="Логин" name="loginInput" [(ngModel)]="user.login" #loginInput required />
+    </div>
+  </div>
+  <div class="LoginForm-formControl">
+    <div class="LoginForm-formControl-password">
+      <!-- <span *ngIf="!loginPassword.valid">{{loginPassword.validationMessage}}</span> -->
+      <!-- <span *ngIf="!loginForm.controls['loginPassword'].valid && loginForm.submitted">{{validationMessages['loginPassword']}}</span> -->
+      <input type="password" class="InputControl LoginForm-input" placeholder="Пароль" name="loginPassword" [(ngModel)]="user.password" #loginPassword required />
+    </div>
+  </div>
+
+  <button type="button" (click)="getForm()">Форма</button>
+
+  <alert></alert>
+
+  <button class="Btn Btn--submit LoginForm-submitBtn" (click)="login(loginForm)">Войти</button>
+</form>

@@ -1,0 +1,6 @@
+<div class="todo">
+  <span class="todo-title" [ngClass]="{'open': (todo.statusId=='1'), 'in-the-work': (todo.statusId=='2'), 'completed': (todo.statusId=='3')}">{{todo.title}}</span>
+  <span class="todo-description">{{todo.description}}</span>
+
+  <span class="todo-tags">{{todo.tags.join()}}</span>
+</div>

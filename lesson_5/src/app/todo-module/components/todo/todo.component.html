@@ -1,0 +1,21 @@
+<form class="todo-form" #todoForm (submit)="save($event)">
+  <input type="text" class="todo-title" placeholder="Заголовок задачи" name="todoTitle" [(ngModel)]="todo.title" required>
+  <input type="text" class="todo-description" placeholder="Описание задачи" name="todoDescription" [(ngModel)]="todo.description">
+
+  <div class="todo-tags" *ngFor="let tag of tags;let i=index;">
+    <div for="tag" class="todo-tag">
+      <input type="checkbox" id="tag-checkbox[{{i}}]" name="tag" [value]="tag" class="todo-tag-checkbox" (change)="onTagChange(tag, $event.target.checked)"
+        [checked]="isChecked(tag)">
+      <label for="tag-checkbox[{{i}}]">{{tag}}</label>
+    </div>
+  </div>
+
+  <select class="todo-status" name="todoStatus" [(ngModel)]="todo.statusId" required>
+    <!-- <option disabled selected [value]="null">Статус задачи</option> -->
+    <option *ngFor="let status of statuses" [value]="status.id" >{{status.name}}</option>
+  </select>
+
+  <div style="color: red">{{validationMessage}}</div>
+
+  <button type="submit" class="btn-save" (click)="rejectCancel()">Сохранить</button>
+</form>

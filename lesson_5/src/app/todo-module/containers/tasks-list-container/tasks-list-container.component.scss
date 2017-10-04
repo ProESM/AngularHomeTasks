@@ -1,0 +1,50 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.editing-todos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    //width: 600px;
+}
+
+.todos-slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-todo {
+    height: 64px;
+    width: 64px;
+    background: url(../../../../assets/add-todo.svg) 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.arrow-up {
+    height: 28px;
+    width: 28px;
+    background: url(../../../../assets/arrow-up.svg) 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.arrow-down {
+    height: 28px;
+    width: 28px;
+    background: url(../../../../assets/arrow-down.svg) 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}

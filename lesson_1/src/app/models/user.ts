@@ -11,14 +11,14 @@ export interface IUser {
 }
 
 export class User implements IUser {    
-    @propertyChanged
+    //@propertyChanged
     name: string;
-    @propertyChanged
+    //@propertyChanged
     email: string;
-    @propertyChanged
+    //@propertyChanged
     dob: Date;
-    @propertyChanged
+    //@propertyChanged
     phone: string;
-    @propertyChanged
+    //@propertyChanged
     picture: string;
 }

@@ -1,0 +1,74 @@
+.todo {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    //padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+// .todo.open {
+//     background: white;
+// }
+
+// .todo.completed {
+//     background: green;
+// }
+
+// .todo.in-the-work {
+//     background: orange;
+// }
+
+.todo-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: black;
+
+    font: bold 110% serif;
+}
+
+.todo-title.open {
+    background: rgba(0, 0, 255, 0.46);
+}
+
+.todo-title.completed {
+    background: #11AD11;
+}
+
+.todo-title.in-the-work {
+    background: orange;
+}
+
+.todo-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.todo-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    border-width: 2px 0 0 0;
+    border-style: solid;
+    border-color: black;
+
+    font: normal 80% serif;
+    color: green
+}

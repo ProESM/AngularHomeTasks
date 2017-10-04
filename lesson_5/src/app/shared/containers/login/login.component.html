@@ -1,0 +1,16 @@
+<form class="LoginForm" autocomplete="off" novalidate #loginForm="ngForm">   
+    <h2 class="LoginForm-title">
+        <span class="Text--highlight">Вход в систему</span>
+    </h2>
+    
+    <div class="LoginForm-formControl">
+        <input type="text" class="InputControl LoginForm-input" placeholder="Логин" name="login" [(ngModel)]="user.login" required login />
+    </div>
+    <div class="LoginForm-formControl">
+        <input type="password" class="InputControl LoginForm-input" placeholder="Пароль" name="password" [(ngModel)]="user.password" required />
+    </div>
+
+    <alert></alert>  
+
+    <button class="Btn Btn--submit LoginForm-submitBtn" (click)="login(loginForm)">Войти</button>
+</form>

@@ -19,6 +19,7 @@ export class UserService {
 
     private handleError(error: any): Promise<any> {
         console.error('Произошла ошибка', error); 
+
         return Promise.reject(error.message || error);
     }
 
@@ -45,7 +46,7 @@ export class UserService {
                     //user.dob = new Date(response.json().results[0].dob);
                     //user.picture = response.json().results[0].picture.medium;
                     
-                    user.name = `${response["results"][0].name.title} ${response["results"][0].name.first} ${response["results"][0].name.last}`;                    
+                    user.name = `${response["results"][0].name.title} ${response["results"][0].name.first} ${response["results"][0].name.last}`;  
                     user.email = response["results"][0].email;
                     user.phone = response["results"][0].phone;
                     user.dob = new Date(response["results"][0].dob);
