@@ -1,3 +1,5 @@
+<todo-filter [todoFilter]="todoFilter" (onApplied)="changeTodoFilter($event)"></todo-filter>
+
 <div class="todos-slider" *ngIf="todos.length">
   <div class="arrow-up" (click)="appSlider.scrolLeft()" *ngIf="appSlider.visibleStartIndex"></div>
   <app-slider class="app-slider" [verticalDirection]="true" #appSlider [todos]=todos [maxVisibleCount]=3>
@@ -5,3 +7,4 @@
   </app-slider>
   <div class="arrow-down" (click)="appSlider.scrollRight()" *ngIf="((appSlider.todos.length > 3) && ((appSlider.todos.length - appSlider.visibleStartIndex) > appSlider.maxVisibleCount))"></div>
 </div>
+<div class="add-todo" (click)="addTodo()"></div>

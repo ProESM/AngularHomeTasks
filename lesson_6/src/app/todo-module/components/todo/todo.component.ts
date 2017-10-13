@@ -2,13 +2,13 @@ import { Component, OnInit, Input, AfterViewInit, ViewChild, Output, EventEmitte
 
 import { NgForm } from "@angular/forms";
 
-import { TodoItemService } from './../../services/todo-item.service';
-import { TagService } from './../../services/tag.service';
+import { TodoItemService } from './../../../shared/services/todo-item.service';
+import { TagService } from './../../../shared/services/tag.service';
 
-import { ITodo } from './../../models/itodo';
-import { Todo } from './../../models/todo';
+import { ITodo } from './../../../shared/models/itodo';
+import { Todo } from './../../../shared/models/todo';
 
-import { statuses } from './../../data/status';
+import { statuses } from './../../../shared/data/status';
 
 @Component({
   selector: 'todo',
@@ -38,7 +38,7 @@ export class TodoComponent implements OnInit, AfterViewInit {
     private todoItemService: TodoItemService,
     private tagService: TagService
   ) {
-    this.tags = this.tagService.tags;    
+    this.tags = this.tagService.tags;
   }
 
   ngOnInit() {}
@@ -68,9 +68,19 @@ export class TodoComponent implements OnInit, AfterViewInit {
     if (!this.isCanceled) {
       if (this.todoForm.valid) {
         this.validationMessage = null;
-        this.todoItemService.saveTodo(this.todo);
-        this.todoForm.reset();        
-        this.onSaved.emit(this.todo);
+
+        if (this.todo.id === 'new') {
+          this.todoItemService.addTodo(this.todo).subscribe(() => {
+            this.todoForm.reset();
+            this.onSaved.emit(this.todo);
+          });
+        } else {
+          this.todoItemService.saveTodo(this.todo)
+            .subscribe(() => {
+              this.todoForm.reset();
+              this.onSaved.emit(this.todo);
+            });
+        }
       } else {
         this.validationMessage = "Не все поля заполнены!";        
       }

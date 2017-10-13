@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
-import { ITodo } from './../../models/itodo';
+import { ITodo } from './../../../shared/models/itodo';
 
 @Component({
     selector: 'app-slider',

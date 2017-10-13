@@ -7,7 +7,8 @@ export class TagService {
     
     tags: string[];
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     loadTags(): void {
         this.http.get(this._tagJsonUrl)            
@@ -16,8 +17,14 @@ export class TagService {
                     if (response["tags"] != undefined && response["tags"] != null) {
                         this.tags = response["tags"];
                     }
-                    //console.log('tags=', this.tags);
                 }
             );
+    }
+
+    addTag(tag: string): void {
+        let index = this.tags.findIndex(x => x == tag);
+        if (index === -1) {
+            this.tags.push(tag);
+        }
     }
 }

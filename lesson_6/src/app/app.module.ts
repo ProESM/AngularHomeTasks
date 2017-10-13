@@ -6,20 +6,18 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
+// import { TodoModule } from './todo-module/todo.module';
+
 import { LayoutComponent } from './shared/containers/layout/layout.component';
 import { HeaderComponent } from './shared/containers/header/header.component';
 import { FooterComponent } from './shared/containers/footer/footer.component';
 import { HomeComponent } from './shared/containers/home/home.component';
-import { AppSliderComponent } from './shared/containers/app-slider/app-slider.component';
-import { ItemComponent } from './shared/components/item/item.component';
-import { TodoComponent } from './shared/components/todo/todo.component';
+
 
 import { AlertComponent } from './shared/components/alert/alert.component';
 
 import { LoginComponent } from './shared/containers/login/login.component';
-
-import { TaskViewContainerComponent } from './shared/containers/task-view-container/task-view-container.component';
-import { TasksListContainerComponent } from './shared/containers/tasks-list-container/tasks-list-container.component';
+import { RegistrationComponent } from './shared/containers/registration/registration.component';
 
 import { routes } from './app.routing';
 
@@ -27,6 +25,8 @@ import { TagService } from './shared/services/tag.service';
 import { TodoItemService } from './shared/services/todo-item.service';
 import { TodoItemsService } from './shared/services/todo-items.service';
 import { VersionInterceptorService } from './shared/services/version-interceptor.service';
+
+import { NonCyrillicDirective } from './shared/directives/non-cyrillic.directive';
 
 export function loadTags(tagService: TagService) {
   return () => {
@@ -47,28 +47,26 @@ export function loadUser(auth: AuthService) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AppSliderComponent,
-    ItemComponent,
-    TodoComponent,
+    AppComponent,    
     AlertComponent,
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
     LoginComponent,
+    RegistrationComponent,
     HomeComponent,
-    TaskViewContainerComponent,
-    TasksListContainerComponent
+    NonCyrillicDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    //TodoModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
   providers: [
-    { provide: 'ORIGIN_URL', useValue: location.origin },
+    //{ provide: 'ORIGIN_URL', useValue: location.origin },
     AlertService,
     AuthService,
     AuthGuardService,

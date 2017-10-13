@@ -1,38 +1,37 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm, FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
 import { IUser } from '../../models/user';
+import 'rxjs/add/operator/takeWhile';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  private alive: boolean;
+  
   private user: IUser = {
-    login: '',
+    email: '',
     password: ''
   };
-
-  @ViewChild('loginForm', { read: NgForm })
-  public myLoginForm: NgForm;
-
-  //@ViewChild("loginInput")
-  //private loginInput: FormControl;
 
   loading = false;
   returnUrl: string;
 
-  validationMessages: { [id: string] : string; } = {};
-  
+  public validationErrorMessages: { [id: string]: string } = {};
+
   constructor(
     private auth: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private alertService: AlertService
-  ) { }
+  ) {
+    this.alive = true;
+  }
 
   ngOnInit() {
     // reset login status
@@ -42,30 +41,23 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  ngAfterViewInit(): void {
-    console.log('loginForm=', this.myLoginForm);
-    //console.log('loginInput=', this.loginInput);
-  }
-
-  getForm(): void {
-    console.log('loginForm=', this.myLoginForm);
-  }
-
   login(form: NgForm) {
+    this.validationErrorMessages = {};
     if (form.invalid) {
-      //console.log('loginInput=', form.controls['loginInput']);
-      if (!form.controls['loginInput'].valid) {
-        this.validationMessages['loginInput'] = "Не указан логин.";
-      }
-      console.log('loginPassword=', form.controls['loginPassword']);
-      if (!form.controls['loginPassword'].valid) {
-        this.validationMessages['loginPassword'] = "Не указан пароль.";
-      }
+      Object.keys(form.controls).forEach(controlName => {
+        if (!form.controls[controlName].valid) {
+          this.validationErrorMessages[controlName] = form.controls[controlName].errors.message;
+          if (controlName === 'email') {
+            this.validationErrorMessages[controlName] = "Введите корректный email";
+          };
+        }
+      });
       return;
     }
 
     this.loading = true;
     this.auth.authenticate(this.user)     
+      .takeWhile(() => this.alive)
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
@@ -75,6 +67,9 @@ export class LoginComponent implements OnInit {
          this.loading = false;
         }
       );
-    
+  }
+
+  ngOnDestroy() {
+    this.alive = false;
   }
 }

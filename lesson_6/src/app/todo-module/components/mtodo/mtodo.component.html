@@ -1,0 +1,27 @@
+<form class="todo-form" novalidate [formGroup]="mtodoForm">
+  <input type="text" class="todo-title" placeholder="Заголовок задачи" name="todoTitle" formControlName="todoTitle" >
+  <input type="text" class="todo-description" placeholder="Описание задачи" name="todoDescription" formControlName="todoDescription" >
+
+  <div formArrayName="todoTags">
+    <div class="todo-tags" *ngFor="let tag of tags;let i=index;">
+      <div for="tag" class="todo-tag" formGroupName="{{i}}">
+        <input type="checkbox" formControlName="{{tag}}" id="tag-checkbox[{{i}}]" class="todo-tag-checkbox">
+        <label for="tag-checkbox[{{i}}]" class="todo-tag-label">{{tag}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-tag">
+    <input type="text" class="add-tag-text" placeholder="Новый тег" #addTagText>
+    <button type="button" class="btn-add-tag" (click)="addTag(addTagText.value)">Добавить</button>
+  </div>
+
+  <select class="todo-status" name="todoStatus" formControlName="todoStatus" >
+    <!-- <option disabled selected [value]="null">Статус задачи</option> -->
+    <option *ngFor="let status of statuses" [value]="status.id" >{{status.name}}</option>
+  </select>
+  
+  <div style="color: red">{{validationMessage}}</div>
+
+  <button type="submit" class="btn-save" (click)="save($event)">Сохранить</button>
+</form>

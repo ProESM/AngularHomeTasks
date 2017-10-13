@@ -1,11 +1,11 @@
 export interface IUser {
-    login: string;
+    email: string;
     password: string;
     $id?: string;
 }
 
 export class User implements IUser {
-    login: string;
+    email: string;
     password: string;
     $id?: string;
 }

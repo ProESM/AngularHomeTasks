@@ -9,7 +9,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.LoginForm {
+.registration-form {
     padding: 40px;
     display: block;
     width: 274px;
@@ -20,50 +20,38 @@
     overflow: hidden;
 }
 
-.LoginForm-title {
+.registration-title {
     font-weight: 100%;
     text-align: center;
     font-size: 2.3em;
 }
 
-.LoginForm-submitBtn {
+.btn-register {
     width: 100%;
     display: block;
     margin-bottom: 10px;
     position: relative;
-}
 
-.Btn {
     text-align: center;
     font-size: 14px;
     font-family: 'Arial', sans-serif;
     font-weight: 700;
     height: 36px;
     padding: 0 8px;
-    /* border-radius: 3px; */
-    /* -webkit-user-select: none;
-    user-select: none; */
-}
 
-.Btn--submit {
-    /* border: 1px solid #3079ed; */
     border: 0px;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,0.1); 
     background-color: #4d90fe;
-    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
-.Btn--submit:hover {
-    /* border: 1px solid #2f5bb7; */
+.btn-register:hover {
     border: 0px;
     text-shadow: 0 1px rgba(0,0,0,0.3);
     background-color: #357ae8;
-    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
-.InputControl,
-.LoginForm-input {
+.registration-form-input {
     height: 44px;
     font-size: 16px;
     width: 100%;
@@ -78,8 +66,7 @@
     -moz-box-sizing: border-box;
 }
 
-.InputControl:hover,
-.LoginForm-input:hover, {
+.registration-form-input:hover, {
     border: 1px solid #b9b9b9;
     border-top: 1px solid #a0a0a0;
     -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
@@ -87,35 +74,13 @@
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.InputControl.ng-dirty.ng-invalid,
-.LoginForm-input.ng-dirty.ng-invalid, {
+.registration-form-input.ng-dirty.ng-invalid, {
     outline: none !important;
     border: 1px solid #f44336;
     border-top: 1px solid #f44336;
     -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
     -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.LoginForm-help {
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-}
-
-.LoginForm-regLink,
-.LoginForm-forgetLink {
-  text-decoration: none;
-  color: #666;
-  font-weight: 400;
-  text-align: center;
-  display: inline-block;
-  opacity: 0.6;
-  transition: opacity ease 0.5s;
-}
-
-.LoginForm a:hover {
-  opacity: 1;
 }
 
 .validation-error-message {

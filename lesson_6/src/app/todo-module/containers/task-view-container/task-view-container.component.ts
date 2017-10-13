@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { TodoItemService } from './../../services/todo-item.service';
-import { TodoItemsService } from './../../services/todo-items.service';
+import { TodoItemService } from './../../../shared/services/todo-item.service';
+import { TodoItemsService } from './../../../shared/services/todo-items.service';
 
 import { AppSliderComponent } from './../app-slider/app-slider.component';
 import { TodoComponent } from '../../components/todo/todo.component';
+import { MTodoComponent } from '../../components/mtodo/mtodo.component';
 
-import { ITodo } from './../../models/itodo';
-import { Todo } from './../../models/todo';
+import { ITodo } from './../../../shared/models/itodo';
+import { Todo } from './../../../shared/models/todo';
+
 @Component({
   selector: 'task-view-container',
   templateUrl: './task-view-container.component.html',
@@ -23,7 +25,8 @@ export class TaskViewContainerComponent implements OnInit, AfterViewInit {
   private appSlider: AppSliderComponent;
 
   @ViewChild("editingTodoComponent")
-  public editingTodoComponent: TodoComponent;
+  //public editingTodoComponent: TodoComponent;
+  public editingTodoComponent: MTodoComponent;
 
   constructor(
     private router: Router,
@@ -36,8 +39,21 @@ export class TaskViewContainerComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((params) => {      
-      this.editingTodo = this.todoItemService.getTodo(params.get('id')).clone();
+    this.activatedRoute.paramMap.subscribe((params) => {
+      let todoId = params.get('id');
+
+      if (todoId === 'new') {
+        this.editingTodo = new Todo();    
+        this.editingTodo.id = 'new';
+        this.editingTodo.tags = [];
+        this.editingTodo.statusId = 1;
+        this.editingTodo.statusName = "открыто";
+      } else {
+        this.todoItemService.getTodo(params.get('id'))
+          .subscribe(todo => {
+            this.editingTodo = todo.clone();
+          });
+      }
     });
     this.updateTodos();
   }
@@ -45,11 +61,13 @@ export class TaskViewContainerComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {}
 
   updateTodos(): void {
-    while (this.todos.length > 0) {
-      this.todos.pop();
-    }
-
-    this.todoItemsService.getTodos().forEach(todo => this.todos.push(todo));
+    this.todoItemsService.getTodosAsync()
+      .subscribe(todos => {
+        while (this.todos.length > 0) {
+          this.todos.pop();
+        }
+        todos.forEach(todo => this.todos.push(todo));
+      });
   }
 
   updateOrInsertTodo(todo: ITodo): void {
@@ -58,28 +76,11 @@ export class TaskViewContainerComponent implements OnInit, AfterViewInit {
     if (this.appSlider !== undefined && this.appSlider !== null) {
       this.appSlider.getVisibleTodos();
     }
-
-    this.router.navigate([`todo/${todo.id}`]);
-    
-    // let deletedEditingTodoIndex = this.editingTodos.findIndex(t => t.id == todo.id);
-
-    // if (deletedEditingTodoIndex !== -1) {
-    //   this.editingTodos.splice(deletedEditingTodoIndex, 1);
-    //   this.editingTodosSlider.getVisibleTodos();
-    // }
+    this.router.navigate(["todos"]);
   }
 
   editTodo(todo: ITodo): void {
     //this.router.navigate(["../",  { id: todo.id }], { relativeTo: this.activatedRoute });
-    this.router.navigate([`todo/${todo.id}`]);
-
-    // if (this.editingTodos.length < this.maxEditingTodos) {
-    //   let editingTodoIndex = this.editingTodos.findIndex(t => t.id == todo.id);
-
-    //   if (editingTodoIndex === -1) {
-    //     this.editingTodos.push(todo);
-    //     this.editingTodosSlider.getVisibleTodos();
-    //   }
-    // }
+    this.router.navigate([`todos/${todo.id}`]);
   }
 }

@@ -1,0 +1,10 @@
+<form class="todo-filer-form" novalidate #todoFilterForm>    
+    Фильтры
+    <input type="text" class="todo-id" placeholder="Id задачи" name="todoId" [(ngModel)]="todoFilter.id">
+    <input type="text" class="todo-title" placeholder="Заголовок задачи" name="todoTitle" [(ngModel)]="todoFilter.title">    
+
+    <tag-filter [(ngModel)]="todoFilter.tags" name="todoTags"></tag-filter>
+    
+    <button type="submit" class="btn-apply" (click)="apply($event)">Применить</button>
+</form>
+
