@@ -11,6 +11,7 @@ export class NonCyrillicDirective implements Validator {
     constructor() { }
 
     validate(control: FormControl): ValidationErrors | null {
+        console.log('control: ', control);
         let error = {
             nonCyrillic: {
                 valid: false

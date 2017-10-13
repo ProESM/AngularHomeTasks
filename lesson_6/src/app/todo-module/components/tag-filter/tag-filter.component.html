@@ -2,7 +2,7 @@
     <button type="button" class="btn-add" (click)="add($event)">Добавить</button>
 
     <div *ngIf="tags.length">
-        <div *ngFor="let tag of tags;let i=index;">
+        <div *ngFor="let tag of tags;let i=index;trackBy: trackByFn">
             <input type="text" class="tag-text" placeholder="Тег" name="tagText" [value]="tag" (change)="onTagChange(i, $event.target.value)">
             <button type="button" class="btn-delete" (click)="delete(i)">Удалить</button>
         </div>

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // reset login status
-    this.auth.logOut();
+    // this.auth.logOut();
  
     // get return url from route parameters or default to '/'
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.validationErrorMessages = {};
     if (form.invalid) {
       Object.keys(form.controls).forEach(controlName => {
+        
         if (!form.controls[controlName].valid) {
           this.validationErrorMessages[controlName] = form.controls[controlName].errors.message;
           if (controlName === 'email') {
@@ -55,18 +56,20 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.loading = true;
-    this.auth.authenticate(this.user)     
-      .takeWhile(() => this.alive)
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-         this.alertService.error(error);
-         this.loading = false;
-        }
-      );
+    if (form.valid) {
+      this.loading = true;
+      this.auth.authenticate(this.user)     
+        .takeWhile(() => this.alive)
+        .subscribe(
+          data => {
+            this.router.navigate([this.returnUrl]);
+          },
+          error => {
+           this.alertService.error(error);
+           this.loading = false;
+          }
+        );
+    }
   }
 
   ngOnDestroy() {

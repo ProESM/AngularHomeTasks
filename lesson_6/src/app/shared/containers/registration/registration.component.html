@@ -4,15 +4,15 @@
   </h2>
 
   <div class="registration-form-control">
-    <div class="validation-error-message" *ngIf='(registrationForm.controls["registrationEmail"]?.invalid && submitted)'>{{validationErrorMessages['registrationEmail']}}</div>
+    <div class="validation-error-message" *ngIf="(registrationForm.controls['registrationEmail']?.invalid && submitted && validationErrorMessages['registrationEmail']?.length)">{{validationErrorMessages['registrationEmail']}}</div>
     <input type="email" class="registration-email registration-form-input" placeholder="Эл. почта" name="registrationEmail" formControlName="registrationEmail">
   </div>
   <div class="registration-form-control">
-    <div class="validation-error-message" *ngIf='(registrationForm.controls["registrationPassword"]?.invalid && submitted)'>{{validationErrorMessages['registrationPassword']}}</div>
+    <div class="validation-error-message" *ngIf="(registrationForm.controls['registrationPassword']?.invalid && submitted && validationErrorMessages['registrationPassword']?.length)">{{validationErrorMessages['registrationPassword']}}</div>
     <input type="password" class="registration-password registration-form-input" placeholder="Введите пароль" name="registrationPassword" formControlName="registrationPassword">
   </div>
   <div class="registration-form-control">
-    <div class="validation-error-message" *ngIf='(registrationForm.controls["registrationConfirmPassword"]?.invalid && submitted)'>{{validationErrorMessages['registrationConfirmPassword']}}</div>
+    <div class="validation-error-message" *ngIf="(registrationForm.controls['registrationConfirmPassword']?.invalid && submitted && validationErrorMessages['registrationConfirmPassword']?.length)">{{validationErrorMessages['registrationConfirmPassword']}}</div>
     <input type="password" class="registration-confirmPassword registration-form-input" placeholder="Повторите пароль" name="registrationConfirmPassword" formControlName="registrationConfirmPassword">
   </div>
 

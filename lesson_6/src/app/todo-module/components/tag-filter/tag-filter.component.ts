@@ -69,5 +69,9 @@ export class TagFilterComponent implements OnInit, AfterViewInit, OnDestroy, Con
         this.propagateChange(this.tags);
     }
 
+    trackByFn(index, item) {
+        return index; // or item.id
+    }
+
     ngOnDestroy() {}
 }

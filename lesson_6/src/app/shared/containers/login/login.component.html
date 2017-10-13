@@ -4,11 +4,11 @@
     </h2>
     
     <div class="LoginForm-formControl">
-        <div class="validation-error-message" *ngIf='(loginForm.controls["email"]?.invalid && loginForm.submitted)'>{{validationErrorMessages['email']}}</div>
+        <div class="validation-error-message" *ngIf="(loginForm.controls['email']?.invalid && loginForm.submitted && validationErrorMessages['email']?.length)">{{validationErrorMessages['email']}}</div>
         <input type="email" class="InputControl LoginForm-input" placeholder="Эл.почта" name="email" [(ngModel)]="user.email" required email/>
     </div>
     <div class="LoginForm-formControl">
-        <div class="validation-error-message" *ngIf="(loginForm.controls['password']?.invalid && loginForm.submitted)">{{validationErrorMessages['password']}}</div>
+        <div class="validation-error-message" *ngIf="(loginForm.controls['password']?.invalid && loginForm.submitted && validationErrorMessages['password']?.length)">{{validationErrorMessages['password']}}</div>
         <input type="password" class="InputControl LoginForm-input" placeholder="Пароль" name="password" [(ngModel)]="user.password" nonCyrillic required />
     </div>
 

@@ -67,6 +67,13 @@ export class RegistrationComponent implements OnInit, AfterViewInit, OnDestroy {
             let registrationPassword = group.controls['registrationPassword'];
             let registrationConfirmPassword = group.controls['registrationConfirmPassword'];
         
+            if (registrationPassword.value === undefined || registrationPassword.value === null || registrationPassword.value.length === 0) {
+                registrationPassword.setErrors({
+                    validatePassword: true,
+                    message: 'Введите пароль.'
+                });
+            }
+
             if (registrationPassword.value !== registrationConfirmPassword.value) {
                 registrationConfirmPassword.setErrors({
                     validatePasswordConfirmation: true,
@@ -95,8 +102,8 @@ export class RegistrationComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.validationErrorMessages[controlName] = "Введите корректный email";
               };
             }
-          });          
-          
+          });
+
           return;
         }
 
